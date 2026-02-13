@@ -1,5 +1,9 @@
 # Project-Viikate
 
+**Schedule**
+<img width="2204" height="1086" alt="image" src="https://github.com/user-attachments/assets/93f6e9af-c621-46f8-911b-32eb5aa300ea" />
+
+
 **Critical Design Decisions**
 
 At 28.1.2026, during the whole team meeting, was decided that the fin can design follows the leftmost design of figure 1. It was also thought of using airsoft BB's as the bearing balls and having two raceways. 
