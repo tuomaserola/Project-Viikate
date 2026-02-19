@@ -945,7 +945,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1c4f5fae-a508-4d1f-86d8-b8a70cf42480")
-		(property "Reference" "C4"
+		(property "Reference" "C5"
 			(at 173.99 97.7899 0)
 			(effects
 				(font
@@ -963,7 +963,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 171.1452 102.87 0)
 			(effects
 				(font
@@ -999,7 +999,7 @@
 		(instances
 			(project "avionics"
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/67ffb272-e6d8-49a0-b0ad-d980ce69be53"
-					(reference "C4")
+					(reference "C5")
 					(unit 1)
 				)
 			)
@@ -1015,7 +1015,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2c5050a1-434b-42b9-9e10-dedb18a40099")
-		(property "Reference" "#PWR012"
+		(property "Reference" "#PWR013"
 			(at 140.97 116.84 0)
 			(effects
 				(font
@@ -1065,7 +1065,7 @@
 		(instances
 			(project "avionics"
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/67ffb272-e6d8-49a0-b0ad-d980ce69be53"
-					(reference "#PWR012")
+					(reference "#PWR013")
 					(unit 1)
 				)
 			)
@@ -1081,7 +1081,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "40321e16-eb63-4e7f-9779-9e36ebeb80a6")
-		(property "Reference" "#PWR011"
+		(property "Reference" "#PWR012"
 			(at 140.97 86.36 0)
 			(effects
 				(font
@@ -1131,7 +1131,7 @@
 		(instances
 			(project "avionics"
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/67ffb272-e6d8-49a0-b0ad-d980ce69be53"
-					(reference "#PWR011")
+					(reference "#PWR012")
 					(unit 1)
 				)
 			)
@@ -1235,7 +1235,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a0059283-8958-4a87-a28f-ea2e3feba379")
-		(property "Reference" "C3"
+		(property "Reference" "C4"
 			(at 161.29 97.7899 0)
 			(effects
 				(font
@@ -1253,7 +1253,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 158.4452 102.87 0)
 			(effects
 				(font
@@ -1289,7 +1289,7 @@
 		(instances
 			(project "avionics"
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/67ffb272-e6d8-49a0-b0ad-d980ce69be53"
-					(reference "C3")
+					(reference "C4")
 					(unit 1)
 				)
 			)
