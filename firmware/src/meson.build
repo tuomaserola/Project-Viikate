@@ -1,0 +1,3 @@
+src += files(
+  'main.cpp'
+)
