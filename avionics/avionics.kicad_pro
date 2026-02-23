@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.25
+          "min_clearance": 0.0
         }
       },
       "diff_pair_dimensions": [
@@ -58,7 +58,48 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "lib_footprint_mismatch|132025000|86480000|836902ab-aba8-4915-88d5-8b4464583b70|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "silk_edge_clearance|113882295|120000000|94eafa5f-4a31-4df4-ac93-b410c2510cf8|ac9bee36-fa3f-4a83-b99c-7437c5ee26c8",
+          ""
+        ],
+        [
+          "silk_edge_clearance|125032295|120000000|94eafa5f-4a31-4df4-ac93-b410c2510cf8|ea19b28c-5796-4228-b8f3-3007e253981e",
+          ""
+        ],
+        [
+          "starved_thermal|132800000|105775000|cb2fb5d4-9c1e-4add-93de-6649cebf0461|427817fb-5515-4908-8c19-e437526b5621|F.Cu",
+          ""
+        ],
+        [
+          "starved_thermal|134000000|104200000|cb2fb5d4-9c1e-4add-93de-6649cebf0461|7cbbd126-5d90-400a-baa9-b8d843fee2d0|F.Cu",
+          ""
+        ],
+        [
+          "starved_thermal|136400000|103475000|cb2fb5d4-9c1e-4add-93de-6649cebf0461|c778c660-a8b3-4df7-81f2-c7ab47842bee|F.Cu",
+          ""
+        ],
+        [
+          "starved_thermal|140275000|68800000|cb2fb5d4-9c1e-4add-93de-6649cebf0461|f8711064-71d8-444e-9af2-df3608d89d02|F.Cu",
+          ""
+        ],
+        [
+          "starved_thermal|144900000|104175000|cb2fb5d4-9c1e-4add-93de-6649cebf0461|fa583c2c-5f68-4526-940c-09d19ab891fa|F.Cu",
+          ""
+        ],
+        [
+          "text_height|132660000|86480000|be30c04d-a584-4692-bfdb-04fb925b4ef1|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "text_height|133930000|86660000|2944e075-b862-48c9-8f39-49a422957c9a|00000000-0000-0000-0000-000000000000",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -139,7 +180,7 @@
         "min_track_width": 0.1,
         "min_via_annular_width": 0.15,
         "min_via_diameter": 0.3,
-        "solder_mask_to_copper_clearance": 0.0,
+        "solder_mask_to_copper_clearance": 0.005,
         "use_height_for_length_calcs": true
       },
       "teardrop_options": [
@@ -189,10 +230,11 @@
       "track_widths": [
         0.0,
         0.2,
-        0.6,
-        1.2,
-        2.5,
-        12.0
+        0.3,
+        0.4,
+        1.0,
+        2.0,
+        5.0
       ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
@@ -226,7 +268,7 @@
           "drill": 0.0
         },
         {
-          "diameter": 0.6,
+          "diameter": 0.7,
           "drill": 0.3
         }
       ],
@@ -529,13 +571,13 @@
     "bom_export_filename": "${PROJECTNAME}.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
-      "field_delimiter": "\t",
+      "field_delimiter": ",",
       "keep_line_breaks": false,
       "keep_tabs": false,
-      "name": "TSV",
+      "name": "CSV",
       "ref_delimiter": ",",
       "ref_range_delimiter": "",
-      "string_delimiter": ""
+      "string_delimiter": "\""
     },
     "bom_presets": [],
     "bom_settings": {
@@ -575,7 +617,7 @@
           "group_by": true,
           "label": "Exclude from Board",
           "name": "${EXCLUDE_FROM_BOARD}",
-          "show": true
+          "show": false
         },
         {
           "group_by": true,
@@ -587,7 +629,7 @@
           "group_by": false,
           "label": "Datasheet",
           "name": "Datasheet",
-          "show": true
+          "show": false
         },
         {
           "group_by": false,
@@ -630,14 +672,26 @@
           "label": "#",
           "name": "${ITEM_NUMBER}",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "DigiKey Part Number",
+          "name": "DigiKey Part Number",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "LCSC Part Number",
+          "name": "LCSC Part Number",
+          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
-      "include_excluded_from_bom": true,
+      "include_excluded_from_bom": false,
       "name": "",
-      "sort_asc": true,
-      "sort_field": "Reference"
+      "sort_asc": false,
+      "sort_field": "Value"
     },
     "connection_grid_size": 50.0,
     "drawing": {
@@ -703,6 +757,10 @@
     [
       "9e1a8ef6-58a8-42c3-a8df-b8575642bd98",
       "Pyro_and_servos"
+    ],
+    [
+      "d5864062-e4e2-4373-a889-0e2ac9930852",
+      "Peripheral Connectors"
     ]
   ],
   "text_variables": {}

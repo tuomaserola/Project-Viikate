@@ -115,3 +115,5 @@ avionics/**/*.o
 avionics/**/*.a
 avionics/**/*.so
 avionics/**/*.dll
+
+avionics/production/
