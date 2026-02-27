@@ -10,13 +10,12 @@
  *
  */
 struct FlightData {
+    unsigned long timeMs;    // [ms] System time since boot
     float altitude;          // [m] Altitude (baro)
     float verticalVelocity;  // [m/s] Positive up
     float accelZ;            // [m/s^2] Acceleration along vertical axis (gravity removed)
     float rotatZ;            // [Rad/s] Rotation around the z axis
     float accelMagnitude;    // [m/s^2] Total acceleration magnitude
-    unsigned long timeMs;    // [ms] System time since boot
     bool rbfRemoved;         // True if remove-before-flight pin is removed
 };
-
 #endif

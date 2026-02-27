@@ -1,4 +1,9 @@
 #include "Sensors.h"
+#include "FlightData.h"
+#include "Arduino.h"
+#include "Constants.h"
+#include "Wire.h"
+#include "MPU6500.h"
  
 Sensors::Sensors() : imu(&Wire, bfs::Mpu6500::I2C_ADDR_PRIM) {
     data_.altitude = 0.0;
@@ -10,15 +15,18 @@ Sensors::Sensors() : imu(&Wire, bfs::Mpu6500::I2C_ADDR_PRIM) {
 }
 
 FlightData Sensors::readFlightData() {
-    
-    imu.Read(); 
-    data_.altitude         = readAltitude();
-    data_.verticalVelocity = computeVerticalVelocity();
-    data_.accelZ           = readAccelZ();
-    data_.rotatZ           = readRotatZ();
-    data_.accelMagnitude   = readAccelMagnitude();
-    data_.timeMs           = millis();
-    data_.rbfRemoved       = digitalRead(Constants::RBF_PIN);
+    data_.timeMs           = millis(); // Time is always read
+    if (imu.Read()){
+        data_.altitude         = readAltitude();
+        data_.verticalVelocity = computeVerticalVelocity();
+        data_.accelZ           = readAccelZ();
+        data_.rotatZ           = readRotatZ();
+        data_.accelMagnitude   = readAccelMagnitude();
+        data_.rbfRemoved       = digitalRead(Constants::RBF_PIN);
+    }
+    else {
+        //Logger.logState("IMU READ FAILURE")
+    }
 
     return data_;
 }
@@ -26,8 +34,7 @@ FlightData Sensors::readFlightData() {
 void Sensors::initialize() {
     Wire.begin(); // Begin I2C transmission
     if (!imu.Begin()) {
-        //Serial.print("FAIL");
-       // TODO: Logger -> IMU FAILURE;
+    // Logger.logText("IMU INIT FAILURE")
     }
 }
 

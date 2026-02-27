@@ -3,8 +3,6 @@
 
 #include "FlightData.h"
 #include "Arduino.h"
-#include "Constants.h"
-#include "Wire.h"
 #include "MPU6500.h"
 
 class Sensors {
