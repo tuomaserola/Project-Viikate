@@ -13,12 +13,14 @@ dependencies += dependency('teensy_core', fallback: ['teensy_core', 'teensy_core
 dependencies += dependency('bme280', fallback: ['bme280', 'bme280_dep'])
 
 src = files()
+inc = include_directories('src/')
 
 subdir('src')
 
 exe = executable(
   'firmware',
   src,
+  include_directories: inc,
   dependencies: dependencies,
   link_language: 'c',
 )
