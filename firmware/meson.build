@@ -8,7 +8,9 @@ project(
   ]
 )
 
-teensy_core_dep = dependency('teensy_core', fallback: ['teensy_core', 'teensy_core_dep'])
+dependencies = []
+dependencies += dependency('teensy_core', fallback: ['teensy_core', 'teensy_core_dep'])
+dependencies += dependency('bme280', fallback: ['bme280', 'bme280_dep'])
 
 src = files()
 
@@ -17,7 +19,7 @@ subdir('src')
 exe = executable(
   'firmware',
   src,
-  dependencies : [teensy_core_dep],
+  dependencies: dependencies,
   link_language: 'c',
 )
 
