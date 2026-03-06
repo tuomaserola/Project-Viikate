@@ -93,14 +93,14 @@ avionics/**/*.log
 # ----------------------------------------------------------------------
 # IDE and Editor clutter
 # ----------------------------------------------------------------------
-avionics/**/*.swp
-avionics/**/*.swo
-avionics/**/*.bak
-avionics/**/.DS_Store
-avionics/**/Thumbs.db
-avionics/**/.idea/
-avionics/**/.vscode/
-avionics/**/*.code-workspace
+**/*.swp
+**/*.swo
+**/*.bak
+**/.DS_Store
+**/Thumbs.db
+**/.idea/
+**/.vscode/
+**/*.code-workspace
 
 # ----------------------------------------------------------------------
 # Compiled objects (if simulation/build scripts exist)
@@ -115,3 +115,13 @@ avionics/**/*.o
 avionics/**/*.a
 avionics/**/*.so
 avionics/**/*.dll
+
+avionics/production/
+
+firmware/build/
+firmware/subprojects/
+!firmware/subprojects/*.wrap
+!firmware/subprojects/.wraplock
+!firmware/subprojects/packagefiles
+!firmware/subprojects/packagefiles/**
+**/.cache/
