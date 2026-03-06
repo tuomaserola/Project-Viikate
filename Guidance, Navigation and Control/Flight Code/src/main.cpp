@@ -6,19 +6,17 @@
 
 DataLogger DataLogger_;
 StateMachine StateMachine_;
-Sensors Sensors_;
+Sensors Sensors_(DataLogger_);
 
 void setup() {
   Serial.begin(115200); 
-  while (!Serial); // Wait for serial connection to initialize
+  DataLogger_.initialize(); // Initialize this before anything else to log failures
   Sensors_.initialize();
-  DataLogger_.initialize();
   // Controls_.initialize(); 
-
+  DataLogger_.logEvent(LogType::INFO, "SETUP COMPLETE");
 }
 
 void loop() {
-  // Serial.println("Hello Space");
   FlightData data = Sensors_.readFlightData();
   DataLogger_.logFlightData(data);
   // Controller.control(data)

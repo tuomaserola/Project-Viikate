@@ -1,35 +1,39 @@
-#include "Datalogger.h"
-#include "SD.H"
-#include "SPI.h"
+#include <Arduino.h>
+#include <SD.H>
+#include <SPI.h>
+#include "DataLogger.h"
 #include "Constants.h"
 
-
-DataLogger::DataLogger(bool logFlightData){
-    logFlightData_ = logFlightData;
-}
+DataLogger::DataLogger(){}
 
 void DataLogger::initialize(){
     pinMode(Constants::CS_PIN, OUTPUT);
     SD.begin(Constants::CS_PIN);
 
-    if (SD.exists("flight.csv")) {SD.remove("flight.csv");} // Remove old flight data
-    if (SD.exists("eventLog.txt")) {SD.remove("eventLog.txt");} // Remove old event log
-   
-    auto FDF = SD.open("flight.csv", FILE_WRITE); // FDF = Flight Data File
-    if (FDF){ // Writing headers
+    // Find the next available file name
+    int i = 0;
+    while (SD.exists("flight" + String(i) + ".csv")) {
+        i++;
+    }
+    flightFile_ = "flight"+ String(i) + ".csv";
+    eventFile_ = "event"+ String(i) + ".csv";
+
+    File FDF = SD.open(flightFile_, FILE_WRITE); // Flight Data File
+    if (FDF){ // Writing headers for FDF
         FDF.println("timeMs,altitude,verticalVelocity,accelZ,rotatZ,accelMagnitude,rbfRemoved");
         FDF.close();
     }
    
-    auto EDF = SD.open("eventLog.txt", FILE_WRITE); // Event Data File
+    File EDF = SD.open(eventFile_, FILE_WRITE); // Event Data File
     if (EDF) {
-        EDF.println("--- LOG START ---");
+        EDF.println("timeMs,severity,message");
         EDF.close();
+        logEvent(LogType::INFO, "LOG START");
     }
 }
 
-bool DataLogger::logFlightData(const FlightData& data){
-    auto FDF = SD.open("flight.csv", FILE_WRITE); // Flight Data File
+void DataLogger::logFlightData(const FlightData& data){
+    File FDF = SD.open(flightFile_, FILE_WRITE); // Flight Data File
     if (FDF){
         FDF.print(data.timeMs);
         FDF.print(",");
@@ -45,11 +49,26 @@ bool DataLogger::logFlightData(const FlightData& data){
         FDF.print(",");
         FDF.println(data.rbfRemoved);
         FDF.close();
-        return true;
     }
-    else {return false;}
-
-};
+}
 
 
-// bool Datalogger::logState(){} // Format: "Time, Status of flight, Additional information like "Parachute deployed" "
+void DataLogger::logEvent(const LogType& type, const String& event){
+    static String lastEvent = "";
+    static unsigned long lastLogTime = 0;
+    
+    // Skip writing if the message is the same as 50 milliseconds ago
+    if (event == lastEvent && millis() - lastLogTime < 50) return;
+    lastEvent = event;
+    lastLogTime = millis();
+
+    File EDF = SD.open(eventFile_, FILE_WRITE);
+    if (EDF) {
+        EDF.print(millis());
+        EDF.print(",");
+        EDF.print((int)type); // Severity number
+        EDF.print(",");
+        EDF.println(event);
+        EDF.close(); 
+    }
+}

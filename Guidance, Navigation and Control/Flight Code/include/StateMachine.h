@@ -1,9 +1,10 @@
 #ifndef STATEMACHINE
 #define STATEMACHINE
 
-#include "Flightdata.h"
+#include "Constants.h"
 
 /**
+ * @file StateMachine.h
  * @brief Discrete flight states for the rocket.
  *
  * The state machine progresses monotonically through these states.
