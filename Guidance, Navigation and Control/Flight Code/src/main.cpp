@@ -1,23 +1,25 @@
+#include "Arduino.h"
+#include "Datalogger.h"
 #include "StateMachine.h"
 #include "Sensors.h"
-#include "Arduino.h"
 
+
+DataLogger DataLogger_;
 StateMachine StateMachine_;
-Sensors Sensors_;
+Sensors Sensors_(DataLogger_);
 
 void setup() {
+  Serial.begin(115200); 
+  DataLogger_.initialize(); // Initialize this before anything else to log failures
   Sensors_.initialize();
-  Serial.begin(9600);
-  //Pins.initialize(); 
-  //Controls.initialize();
-
-
+  // Controls_.initialize(); 
+  DataLogger_.logEvent(LogType::INFO, "SETUP COMPLETE");
 }
 
 void loop() {
-  //Serial.print("Hello World");
   FlightData data = Sensors_.readFlightData();
-  Serial.println(data.rotatZ);
+  DataLogger_.logFlightData(data);
+  // Controller.control(data)
   delay(100);
  
 }

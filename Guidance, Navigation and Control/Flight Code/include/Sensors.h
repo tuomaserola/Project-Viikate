@@ -1,15 +1,13 @@
 #ifndef SENSORS
 #define SENSORS
 
-#include "FlightData.h"
 #include "Arduino.h"
-#include "Constants.h"
-#include "Wire.h"
 #include "MPU6500.h"
+#include "DataLogger.h"
 
 class Sensors {
     public: 
-        Sensors();
+        Sensors(DataLogger& datalogger);
         void initialize();
         FlightData readFlightData();
 
@@ -21,6 +19,7 @@ class Sensors {
         float readAccelZ();
         float readRotatZ();
         float readAccelMagnitude();
+        DataLogger& datalogger_;
 };
 
 
