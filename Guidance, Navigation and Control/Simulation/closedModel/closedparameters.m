@@ -1,4 +1,4 @@
-clear all
+clear *
 
 % Body fixed frame, x: roll axis, y: pitch axis, z: yaw axis
 % Inertial frame, NED (x: North, y: East, z: Down)
@@ -8,6 +8,10 @@ bt = 1; % motor burnout time s
 dmdt = -(mf - me)/bt; % rate of mass change (linear)
 Ie = [0.0027 0 0; 0 0.1655 0; 0 0 0.1655];% Empty inertia matrix
 If = [0.0027 0 0; 0 0.177 0; 0 0 0.177]; %Full inertia matrix
+
+% Wind in inertial coords
+wind = [0 10 7]';
+%seed = randi(100);
 
 %Forces
 Thrust = [128 0 0]'; %Body fixed frame
@@ -51,15 +55,15 @@ b = 0.14;
 
 % PID target values
 ref_w = pi; %Target rolling rate (rad/s)
-refz = 55;
-refy = 55;
+refz = 50;
+refy = 50;
 ref_phi = pi/2;
 
 % Pitch and Yaw PID gains
-Pgainz = 0;%deg2rad(20)/(refz-50);
-Pgainy = 0;%deg2rad(20)/(refy-50);
-Dgain = 0;%0.1;
-Igain = 0;%0.3;
+Pgainz = deg2rad(90);
+Pgainy = deg2rad(90);
+Dgain = 0.2;
+Igain = 0;
 
 % Roll orientation PID gains
 Pgainphi = deg2rad(10)/ref_phi;
