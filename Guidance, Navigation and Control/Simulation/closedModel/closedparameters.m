@@ -60,8 +60,8 @@ refy = 50;
 ref_phi = pi/2;
 
 % Pitch and Yaw PID gains
-Pgainz = deg2rad(90);
-Pgainy = deg2rad(90);
+Pgainz = deg2rad(20);
+Pgainy = deg2rad(20);
 Dgain = 0.2;
 Igain = 0;
 
