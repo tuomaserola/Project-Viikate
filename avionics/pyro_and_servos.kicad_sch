@@ -779,35 +779,36 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Connector:TestPoint"
+		(symbol "Device:C"
 			(pin_numbers
 				(hide yes)
 			)
 			(pin_names
-				(offset 0.762)
-				(hide yes)
+				(offset 0.254)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "TP"
-				(at 0 6.858 0)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Value" "TestPoint"
-				(at 0 5.08 0)
+			(property "Value" "C"
+				(at 0.635 -2.54 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
 			(property "Footprint" ""
-				(at 5.08 0 0)
+				(at 0.9652 -3.81 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -816,15 +817,6 @@
 				)
 			)
 			(property "Datasheet" "~"
-				(at 5.08 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "test point"
 				(at 0 0 0)
 				(effects
 					(font
@@ -833,7 +825,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "test point tp"
+			(property "Description" "Unpolarized capacitor"
 				(at 0 0 0)
 				(effects
 					(font
@@ -842,7 +834,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "Pin* Test*"
+			(property "ki_keywords" "cap capacitor"
 				(at 0 0 0)
 				(effects
 					(font
@@ -851,10 +843,158 @@
 					(hide yes)
 				)
 			)
-			(symbol "TestPoint_0_1"
-				(circle
-					(center 0 3.302)
-					(radius 0.762)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:C_Polarized"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C_Polarized"
+				(at 0.635 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0.9652 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Polarized capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "CP_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_Polarized_0_1"
+				(rectangle
+					(start -2.286 0.508)
+					(end 2.286 1.016)
 					(stroke
 						(width 0)
 						(type default)
@@ -863,12 +1003,47 @@
 						(type none)
 					)
 				)
+				(polyline
+					(pts
+						(xy -1.778 2.286) (xy -0.762 2.286)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 2.794) (xy -1.27 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 2.286 -0.508)
+					(end -2.286 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
 			)
-			(symbol "TestPoint_1_1"
+			(symbol "C_Polarized_1_1"
 				(pin passive line
-					(at 0 0 90)
-					(length 2.54)
-					(name "1"
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -876,6 +1051,24 @@
 						)
 					)
 					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1662,8 +1855,8 @@
 		)
 	)
 	(rectangle
-		(start 107.95 105.41)
-		(end 207.01 162.56)
+		(start 57.15 111.76)
+		(end 168.91 179.07)
 		(stroke
 			(width 0)
 			(type default)
@@ -1687,7 +1880,7 @@
 	)
 	(text "Pyros"
 		(exclude_from_sim no)
-		(at 115.57 108.712 0)
+		(at 76.2 126.492 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1712,7 +1905,25 @@
 		(uuid "09408ffb-0577-4bf8-b168-476127b1bdb1")
 	)
 	(junction
-		(at 177.8 137.16)
+		(at 189.23 38.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0bfd6e55-4597-41fc-9b2e-ff5b66043cb1")
+	)
+	(junction
+		(at 189.23 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1349718f-ed85-4641-9df5-f9675ad0e118")
+	)
+	(junction
+		(at 181.61 72.39)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1ed3074d-ecb2-416d-b6f9-b25d74ce5dc2")
+	)
+	(junction
+		(at 138.43 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2b60cda1-a9a2-47ea-b6ed-a2226ec01194")
@@ -1724,40 +1935,22 @@
 		(uuid "39318136-68a2-4652-ac99-8862891e5047")
 	)
 	(junction
-		(at 133.35 137.16)
+		(at 83.82 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3fb08d53-2298-4f7a-803b-9f80a6c74159")
 	)
 	(junction
-		(at 91.44 69.85)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "42eb2586-1f76-4d1e-bb69-55203cbca1d6")
-	)
-	(junction
-		(at 123.19 137.16)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "49878ee8-bdb4-4657-8191-b2b8cb2baff7")
-	)
-	(junction
-		(at 157.48 148.59)
+		(at 118.11 166.37)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4e98e230-0e48-4329-8a3d-d88abe14a691")
 	)
 	(junction
-		(at 91.44 49.53)
+		(at 181.61 44.45)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "5b5ba4f5-59ae-42a7-8670-bc4b91fdec96")
-	)
-	(junction
-		(at 182.88 62.23)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6f7ffce6-a959-4e4b-ba98-2fce25b84b18")
+		(uuid "5d9368ed-51bb-4f03-82de-0cba06cf1f22")
 	)
 	(junction
 		(at 189.23 74.93)
@@ -1772,6 +1965,12 @@
 		(uuid "8fbe2701-cba0-41ef-aab3-66faedef3dd4")
 	)
 	(junction
+		(at 181.61 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "94342bc4-53fc-44c8-8731-76ad01f8e62c")
+	)
+	(junction
 		(at 189.23 54.61)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1784,38 +1983,26 @@
 		(uuid "c38f7f81-482e-4e31-80e7-fce613cd955f")
 	)
 	(junction
-		(at 182.88 52.07)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "cc5e1237-c8a3-465e-afc0-38388098029f")
-	)
-	(junction
-		(at 91.44 59.69)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ced30d42-4cc7-4e2d-b488-073367695826")
-	)
-	(junction
-		(at 157.48 125.73)
+		(at 118.11 143.51)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d00caeb9-9238-47e2-9af7-2348663c7e67")
 	)
 	(junction
-		(at 182.88 72.39)
+		(at 181.61 38.1)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "ed76eb5f-cc42-4a64-bf9a-27c8e68a7b3c")
+		(uuid "eeda1a97-a6a1-404d-8ee2-6c994194cec0")
 	)
 	(junction
-		(at 91.44 80.01)
+		(at 181.61 62.23)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "f39f5706-3538-4ca6-991e-410b04a1449d")
+		(uuid "f60a6efb-fe67-4b48-8606-991064df43ef")
 	)
 	(wire
 		(pts
-			(xy 177.8 127) (xy 177.8 125.73)
+			(xy 138.43 144.78) (xy 138.43 143.51)
 		)
 		(stroke
 			(width 0)
@@ -1855,7 +2042,17 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 45.72) (xy 182.88 52.07)
+			(xy 189.23 38.1) (xy 189.23 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1d6a16b5-c885-4c37-92e3-db42127132f6")
+	)
+	(wire
+		(pts
+			(xy 181.61 33.02) (xy 181.61 38.1)
 		)
 		(stroke
 			(width 0)
@@ -1865,7 +2062,17 @@
 	)
 	(wire
 		(pts
-			(xy 87.63 59.69) (xy 91.44 59.69)
+			(xy 181.61 62.23) (xy 193.04 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "24fc151a-5108-4b21-98e8-e80e3840e530")
+	)
+	(wire
+		(pts
+			(xy 87.63 59.69) (xy 115.57 59.69)
 		)
 		(stroke
 			(width 0)
@@ -1885,7 +2092,7 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 52.07) (xy 182.88 62.23)
+			(xy 181.61 52.07) (xy 181.61 62.23)
 		)
 		(stroke
 			(width 0)
@@ -1895,23 +2102,13 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 125.73) (xy 157.48 132.08)
+			(xy 118.11 143.51) (xy 118.11 149.86)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "37c87796-930d-4f30-9e30-c861ac4375b7")
-	)
-	(wire
-		(pts
-			(xy 91.44 59.69) (xy 115.57 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "380c7cd2-bae0-4e20-ad28-f77296ee1998")
 	)
 	(wire
 		(pts
@@ -1925,7 +2122,7 @@
 	)
 	(wire
 		(pts
-			(xy 133.35 137.16) (xy 133.35 139.7)
+			(xy 83.82 154.94) (xy 83.82 157.48)
 		)
 		(stroke
 			(width 0)
@@ -1945,7 +2142,7 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 147.32) (xy 177.8 148.59)
+			(xy 138.43 165.1) (xy 138.43 166.37)
 		)
 		(stroke
 			(width 0)
@@ -1955,7 +2152,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 45.72) (xy 189.23 54.61)
+			(xy 189.23 33.02) (xy 189.23 38.1)
 		)
 		(stroke
 			(width 0)
@@ -1985,17 +2182,17 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 62.23) (xy 193.04 62.23)
+			(xy 181.61 52.07) (xy 193.04 52.07)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "4d960292-e125-4b63-a1d4-7ed522599a96")
+		(uuid "5429f253-c983-4031-9e28-5ad7b77fba10")
 	)
 	(wire
 		(pts
-			(xy 157.48 148.59) (xy 157.48 149.86)
+			(xy 118.11 166.37) (xy 118.11 167.64)
 		)
 		(stroke
 			(width 0)
@@ -2005,7 +2202,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 137.16) (xy 149.86 137.16)
+			(xy 96.52 154.94) (xy 110.49 154.94)
 		)
 		(stroke
 			(width 0)
@@ -2045,7 +2242,27 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 137.16) (xy 187.96 137.16)
+			(xy 118.11 128.27) (xy 132.08 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65e15cc7-619c-45d3-8b8a-ad4485832614")
+	)
+	(wire
+		(pts
+			(xy 181.61 72.39) (xy 193.04 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "697d4d7c-897f-4b81-9a6d-268b6cb2f8f7")
+	)
+	(wire
+		(pts
+			(xy 138.43 154.94) (xy 148.59 154.94)
 		)
 		(stroke
 			(width 0)
@@ -2055,17 +2272,7 @@
 	)
 	(wire
 		(pts
-			(xy 119.38 137.16) (xy 123.19 137.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6e91a1a6-b053-47e6-ae76-162121d3aa47")
-	)
-	(wire
-		(pts
-			(xy 91.44 80.01) (xy 138.43 80.01)
+			(xy 87.63 80.01) (xy 138.43 80.01)
 		)
 		(stroke
 			(width 0)
@@ -2075,7 +2282,17 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 119.38) (xy 157.48 119.38)
+			(xy 181.61 38.1) (xy 181.61 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "740ebaf9-90c2-4f56-8393-f1b33371cbb6")
+	)
+	(wire
+		(pts
+			(xy 132.08 134.62) (xy 118.11 134.62)
 		)
 		(stroke
 			(width 0)
@@ -2085,33 +2302,13 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 142.24) (xy 157.48 148.59)
+			(xy 118.11 160.02) (xy 118.11 166.37)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "794d65d0-af5b-42e7-a96f-2f38022eed92")
-	)
-	(wire
-		(pts
-			(xy 182.88 52.07) (xy 193.04 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "79e20e33-d07d-4118-b024-25419118aedd")
-	)
-	(wire
-		(pts
-			(xy 87.63 49.53) (xy 91.44 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7fc2a4f7-7eee-47b3-8a96-2e4888b3f023")
 	)
 	(wire
 		(pts
@@ -2122,16 +2319,6 @@
 			(type default)
 		)
 		(uuid "80272584-8994-4a55-aec2-2aa6be9e1931")
-	)
-	(wire
-		(pts
-			(xy 87.63 69.85) (xy 91.44 69.85)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "87fbf0d9-8d57-4799-a14e-07def827c1d8")
 	)
 	(wire
 		(pts
@@ -2155,7 +2342,17 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 82.55) (xy 193.04 82.55)
+			(xy 118.11 128.27) (xy 118.11 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "90a88af1-052a-4075-9c1d-abdeb37e3341")
+	)
+	(wire
+		(pts
+			(xy 181.61 82.55) (xy 193.04 82.55)
 		)
 		(stroke
 			(width 0)
@@ -2195,7 +2392,7 @@
 	)
 	(wire
 		(pts
-			(xy 133.35 147.32) (xy 133.35 149.86)
+			(xy 83.82 165.1) (xy 83.82 167.64)
 		)
 		(stroke
 			(width 0)
@@ -2215,7 +2412,17 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 121.92) (xy 161.29 121.92)
+			(xy 118.11 125.73) (xy 132.08 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a3dfc40d-8347-4f28-a862-bf3c7dcba384")
+	)
+	(wire
+		(pts
+			(xy 118.11 137.16) (xy 132.08 137.16)
 		)
 		(stroke
 			(width 0)
@@ -2225,7 +2432,17 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 72.39) (xy 182.88 82.55)
+			(xy 181.61 44.45) (xy 181.61 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a6982a58-a757-46ac-ba6a-c6ef8b5bd66c")
+	)
+	(wire
+		(pts
+			(xy 181.61 72.39) (xy 181.61 82.55)
 		)
 		(stroke
 			(width 0)
@@ -2255,23 +2472,13 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 134.62) (xy 177.8 137.16)
+			(xy 138.43 152.4) (xy 138.43 154.94)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "b975b022-ef3c-4ba0-8583-e6351d4ee7a3")
-	)
-	(wire
-		(pts
-			(xy 182.88 72.39) (xy 193.04 72.39)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bc285636-8e80-4d8e-9488-9a4f7c70f4c0")
 	)
 	(wire
 		(pts
@@ -2285,7 +2492,7 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 49.53) (xy 102.87 49.53)
+			(xy 87.63 49.53) (xy 102.87 49.53)
 		)
 		(stroke
 			(width 0)
@@ -2295,17 +2502,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 114.3) (xy 157.48 119.38)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d0b69f04-f6e7-4c8b-b17f-d922774592ed")
-	)
-	(wire
-		(pts
-			(xy 182.88 62.23) (xy 182.88 72.39)
+			(xy 181.61 62.23) (xy 181.61 72.39)
 		)
 		(stroke
 			(width 0)
@@ -2325,17 +2522,17 @@
 	)
 	(wire
 		(pts
-			(xy 87.63 80.01) (xy 91.44 80.01)
+			(xy 118.11 120.65) (xy 118.11 125.73)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "e012861a-ac51-417a-9f90-250a3e971d10")
+		(uuid "dc0829b5-47e6-4aad-8088-460b0dd2b05b")
 	)
 	(wire
 		(pts
-			(xy 123.19 137.16) (xy 133.35 137.16)
+			(xy 69.85 154.94) (xy 83.82 154.94)
 		)
 		(stroke
 			(width 0)
@@ -2345,7 +2542,7 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 148.59) (xy 157.48 148.59)
+			(xy 138.43 166.37) (xy 118.11 166.37)
 		)
 		(stroke
 			(width 0)
@@ -2355,7 +2552,7 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 125.73) (xy 157.48 125.73)
+			(xy 138.43 143.51) (xy 118.11 143.51)
 		)
 		(stroke
 			(width 0)
@@ -2365,7 +2562,17 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 121.92) (xy 157.48 125.73)
+			(xy 189.23 44.45) (xy 189.23 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eb60c624-e1f1-49a3-a10a-7fa2e5f45cbf")
+	)
+	(wire
+		(pts
+			(xy 118.11 137.16) (xy 118.11 143.51)
 		)
 		(stroke
 			(width 0)
@@ -2385,7 +2592,7 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 69.85) (xy 127 69.85)
+			(xy 87.63 69.85) (xy 127 69.85)
 		)
 		(stroke
 			(width 0)
@@ -2395,7 +2602,7 @@
 	)
 	(wire
 		(pts
-			(xy 133.35 137.16) (xy 138.43 137.16)
+			(xy 83.82 154.94) (xy 88.9 154.94)
 		)
 		(stroke
 			(width 0)
@@ -2405,13 +2612,83 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 137.16) (xy 177.8 139.7)
+			(xy 138.43 154.94) (xy 138.43 157.48)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "fe4816f1-0699-4100-9a7d-f13eb597d5aa")
+	)
+	(label "SERVO_0"
+		(at 170.18 49.53 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1bd81f80-995e-445b-828d-2c92e8cb1320")
+	)
+	(label "SERVO_3"
+		(at 170.18 80.01 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "230a547f-6440-4f3d-99ab-725eeab0f71d")
+	)
+	(label "PYRO_0_Vout"
+		(at 119.38 137.16 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6a8358d6-3e54-4d2c-a62e-278b68008542")
+	)
+	(label "SERVO_2"
+		(at 170.18 69.85 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "79b807e0-2a79-4dde-848a-e0ae7cabab06")
+	)
+	(label "ARM_Vout"
+		(at 119.38 128.27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a2e1e7ed-f36d-4174-b11a-65ef114c248a")
+	)
+	(label "SERVO_1"
+		(at 170.18 59.69 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d6d0c2cb-84ab-4e48-a0d4-041d6f2232e1")
+	)
+	(label "PYRO_0_GATE"
+		(at 97.79 154.94 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f2d52d8a-dffa-4f30-b31e-ee6a6ff98a64")
 	)
 	(hierarchical_label "SERVO_0_PWM"
 		(shape input)
@@ -2426,7 +2703,7 @@
 	)
 	(hierarchical_label "PYRO_0_CONT"
 		(shape output)
-		(at 187.96 137.16 0)
+		(at 148.59 154.94 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2448,7 +2725,7 @@
 	)
 	(hierarchical_label "PYRO_0"
 		(shape input)
-		(at 119.38 137.16 180)
+		(at 69.85 154.94 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2532,6 +2809,69 @@
 				(hide yes)
 			)
 		)
+		(property "DigiKey Part Number" "296-4652-1-ND"
+			(at 123.19 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 123.19 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 123.19 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 123.19 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" ""
+			(at 123.19 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 123.19 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Number" "C155176"
+			(at 123.19 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "8"
 			(uuid "4c8eb485-4b8f-4e12-9f5a-8b08042c4676")
 		)
@@ -2585,7 +2925,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 189.23 45.72 180)
+		(at 189.23 33.02 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2593,8 +2933,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "148cc8a7-a31b-49e4-83ce-3c8c0856a5e1")
-		(property "Reference" "#PWR032"
-			(at 189.23 39.37 0)
+		(property "Reference" "#PWR040"
+			(at 189.23 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2603,7 +2943,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 189.23 40.64 0)
+			(at 189.23 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2611,7 +2951,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 189.23 45.72 0)
+			(at 189.23 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2620,7 +2960,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 189.23 45.72 0)
+			(at 189.23 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2629,7 +2969,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 189.23 45.72 0)
+			(at 189.23 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2643,7 +2983,7 @@
 		(instances
 			(project "avionics"
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "#PWR032")
+					(reference "#PWR040")
 					(unit 1)
 				)
 			)
@@ -2659,7 +2999,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "233cb83e-0fcd-49ba-9e5d-8473199a33f2")
-		(property "Reference" "#PWR026"
+		(property "Reference" "#PWR036"
 			(at 135.89 45.72 0)
 			(effects
 				(font
@@ -2709,7 +3049,7 @@
 		(instances
 			(project ""
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "#PWR026")
+					(reference "#PWR036")
 					(unit 1)
 				)
 			)
@@ -2717,7 +3057,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 177.8 130.81 0)
+		(at 138.43 148.59 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2725,8 +3065,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "27f67ba2-c395-4255-9c52-77149e97cd84")
-		(property "Reference" "R12"
-			(at 180.34 129.5399 0)
+		(property "Reference" "R20"
+			(at 140.97 147.3199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2735,7 +3075,7 @@
 			)
 		)
 		(property "Value" "56k"
-			(at 180.34 132.0799 0)
+			(at 140.97 149.8599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2743,8 +3083,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 176.022 130.81 90)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 136.652 148.59 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2752,8 +3092,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 177.8 130.81 0)
+		(property "Datasheet" ""
+			(at 138.43 148.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2762,7 +3102,70 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 177.8 130.81 0)
+			(at 138.43 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey Part Number" "541-56.0KHCT-ND"
+			(at 138.43 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 138.43 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 138.43 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 138.43 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "603-RT0603FRE1356KL "
+			(at 138.43 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 138.43 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Number" ""
+			(at 138.43 148.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2779,7 +3182,7 @@
 		(instances
 			(project ""
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "R12")
+					(reference "R20")
 					(unit 1)
 				)
 			)
@@ -2795,7 +3198,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2f1d2fbf-eb2f-4871-8c91-73dab12b7476")
-		(property "Reference" "#PWR030"
+		(property "Reference" "#PWR038"
 			(at 166.37 38.1 0)
 			(effects
 				(font
@@ -2845,7 +3248,7 @@
 		(instances
 			(project ""
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "#PWR030")
+					(reference "#PWR038")
 					(unit 1)
 				)
 			)
@@ -2859,7 +3262,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "33bd7237-30fe-415a-93c7-f2ba4b08fd67")
 		(property "Reference" "J7"
 			(at 199.39 81.2799 0)
@@ -2870,7 +3272,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "Servo_3"
+		(property "Value" "1x3_header"
 			(at 199.39 83.8199 0)
 			(effects
 				(font
@@ -2879,7 +3281,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3-5.08_1x03_P5.08mm_Horizontal"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 			(at 198.12 82.55 0)
 			(effects
 				(font
@@ -2888,7 +3290,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 198.12 82.55 0)
 			(effects
 				(font
@@ -2897,7 +3299,69 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x03, script generated"
+		(property "Description" "Servo_3"
+			(at 203.2 86.106 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DigiKey Part Number" ""
+			(at 198.12 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 198.12 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 198.12 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 198.12 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "538-22-23-6032"
+			(at 198.12 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 198.12 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Number" ""
 			(at 198.12 82.55 0)
 			(effects
 				(font
@@ -2926,7 +3390,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 157.48 149.86 0)
+		(at 118.11 167.64 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2934,8 +3398,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "347525aa-d307-4235-95af-f973313c8c3b")
-		(property "Reference" "#PWR029"
-			(at 157.48 156.21 0)
+		(property "Reference" "#PWR035"
+			(at 118.11 173.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2944,7 +3408,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 157.48 154.94 0)
+			(at 118.11 172.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2952,7 +3416,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 157.48 149.86 0)
+			(at 118.11 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2961,7 +3425,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 157.48 149.86 0)
+			(at 118.11 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2970,7 +3434,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 157.48 149.86 0)
+			(at 118.11 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2984,7 +3448,7 @@
 		(instances
 			(project ""
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "#PWR029")
+					(reference "#PWR035")
 					(unit 1)
 				)
 			)
@@ -2998,7 +3462,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "34b9400d-bf09-4fa1-b936-8eb528a8fa36")
 		(property "Reference" "J6"
 			(at 199.39 71.1199 0)
@@ -3009,7 +3472,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "Servo_2"
+		(property "Value" "1x3_header"
 			(at 199.39 73.6599 0)
 			(effects
 				(font
@@ -3018,7 +3481,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3-5.08_1x03_P5.08mm_Horizontal"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 			(at 198.12 72.39 0)
 			(effects
 				(font
@@ -3027,7 +3490,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 198.12 72.39 0)
 			(effects
 				(font
@@ -3036,7 +3499,69 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x03, script generated"
+		(property "Description" "Servo_2"
+			(at 203.2 75.946 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DigiKey Part Number" ""
+			(at 198.12 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 198.12 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 198.12 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 198.12 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "538-22-23-6032"
+			(at 198.12 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 198.12 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Number" ""
 			(at 198.12 72.39 0)
 			(effects
 				(font
@@ -3065,7 +3590,7 @@
 	)
 	(symbol
 		(lib_id "power:+BATT")
-		(at 157.48 114.3 0)
+		(at 118.11 120.65 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3073,8 +3598,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "43cb40a7-62c2-467b-8fbc-d35ef63ca536")
-		(property "Reference" "#PWR028"
-			(at 157.48 118.11 0)
+		(property "Reference" "#PWR034"
+			(at 118.11 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3083,7 +3608,7 @@
 			)
 		)
 		(property "Value" "+BATT"
-			(at 157.48 109.22 0)
+			(at 118.11 115.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3091,7 +3616,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 157.48 114.3 0)
+			(at 118.11 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3100,7 +3625,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 157.48 114.3 0)
+			(at 118.11 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3109,7 +3634,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+BATT\""
-			(at 157.48 114.3 0)
+			(at 118.11 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3123,7 +3648,83 @@
 		(instances
 			(project ""
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "#PWR028")
+					(reference "#PWR034")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 185.42 38.1 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4f8bbcde-1478-41e1-ae81-79d231b1afb6")
+		(property "Reference" "C18"
+			(at 196.088 36.83 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1u"
+			(at 196.088 39.37 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 189.23 37.1348 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 185.42 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 185.42 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey Part Number" "587-2400-1-ND"
+			(at 185.42 38.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7bb346d8-68e0-49f4-b6cf-002dd685afdf")
+		)
+		(pin "2"
+			(uuid "c7fff24b-3003-4a98-9c61-40aa72d81d5d")
+		)
+		(instances
+			(project ""
+				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
+					(reference "C18")
 					(unit 1)
 				)
 			)
@@ -3131,7 +3732,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 133.35 149.86 0)
+		(at 83.82 167.64 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3139,8 +3740,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5465a1ea-3c46-4cde-9ae7-3b9ebdfc59b6")
-		(property "Reference" "#PWR025"
-			(at 133.35 156.21 0)
+		(property "Reference" "#PWR033"
+			(at 83.82 173.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3149,7 +3750,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 133.35 154.94 0)
+			(at 83.82 172.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3157,7 +3758,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 133.35 149.86 0)
+			(at 83.82 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3166,7 +3767,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 133.35 149.86 0)
+			(at 83.82 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3175,7 +3776,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 133.35 149.86 0)
+			(at 83.82 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3189,7 +3790,7 @@
 		(instances
 			(project ""
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "#PWR025")
+					(reference "#PWR033")
 					(unit 1)
 				)
 			)
@@ -3197,7 +3798,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 133.35 143.51 0)
+		(at 83.82 161.29 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3205,8 +3806,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5bc624d9-a38b-4460-ae1b-f6061728bb64")
-		(property "Reference" "R10"
-			(at 135.89 142.2399 0)
+		(property "Reference" "R18"
+			(at 86.36 160.0199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3215,7 +3816,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 135.89 144.7799 0)
+			(at 86.36 162.5599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3223,8 +3824,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 131.572 143.51 90)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 82.042 161.29 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3232,8 +3833,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 133.35 143.51 0)
+		(property "Datasheet" ""
+			(at 83.82 161.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3242,7 +3843,70 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 133.35 143.51 0)
+			(at 83.82 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey Part Number" "311-100KHRCT-ND"
+			(at 83.82 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 83.82 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 83.82 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 83.82 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "594-MCT06030C1003FP5 "
+			(at 83.82 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 83.82 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Number" ""
+			(at 83.82 161.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3259,7 +3923,7 @@
 		(instances
 			(project ""
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "R10")
+					(reference "R18")
 					(unit 1)
 				)
 			)
@@ -3311,6 +3975,69 @@
 		)
 		(property "Description" "Quadruple Bus Buffer Gates With 3-State Outputs"
 			(at 151.13 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey Part Number" "296-4652-1-ND"
+			(at 151.13 36.83 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 151.13 36.83 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 151.13 36.83 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 151.13 36.83 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" ""
+			(at 151.13 36.83 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 151.13 36.83 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Number" "C155176"
+			(at 151.13 36.83 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3371,7 +4098,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 182.88 45.72 0)
+		(at 181.61 33.02 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3379,8 +4106,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "898cbe99-12dd-4a95-a8d2-8016dbca920b")
-		(property "Reference" "#PWR031"
-			(at 182.88 49.53 0)
+		(property "Reference" "#PWR039"
+			(at 181.61 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3389,7 +4116,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 182.88 40.64 0)
+			(at 181.61 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3397,7 +4124,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 182.88 45.72 0)
+			(at 181.61 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3406,7 +4133,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 182.88 45.72 0)
+			(at 181.61 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3415,7 +4142,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 182.88 45.72 0)
+			(at 181.61 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3429,74 +4156,7 @@
 		(instances
 			(project ""
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "#PWR031")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 91.44 59.69 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "8a2e1562-81ce-47e4-853e-15aea71160e6")
-		(property "Reference" "TP17"
-			(at 93.98 61.7219 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "TP_SERVO_1"
-			(at 93.98 64.2619 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 86.36 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 86.36 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 91.44 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "356554fa-66cd-4a07-a96a-c809685f1e22")
-		)
-		(instances
-			(project ""
-				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "TP17")
+					(reference "#PWR039")
 					(unit 1)
 				)
 			)
@@ -3512,7 +4172,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9785639c-a100-4989-b5a2-93f1ccea3ca9")
-		(property "Reference" "#PWR027"
+		(property "Reference" "#PWR037"
 			(at 146.05 97.79 0)
 			(effects
 				(font
@@ -3562,7 +4222,7 @@
 		(instances
 			(project ""
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "#PWR027")
+					(reference "#PWR037")
 					(unit 1)
 				)
 			)
@@ -3612,6 +4272,69 @@
 			)
 		)
 		(property "Description" "Quadruple Bus Buffer Gates With 3-State Outputs"
+			(at 134.62 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey Part Number" "296-4652-1-ND"
+			(at 134.62 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 134.62 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 134.62 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 134.62 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" ""
+			(at 134.62 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 134.62 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Number" "C155176"
 			(at 134.62 69.85 0)
 			(effects
 				(font
@@ -3673,7 +4396,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 142.24 137.16 270)
+		(at 92.71 154.94 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3681,24 +4404,24 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9e056ff3-bd42-466b-9c14-ab1dbfe74271")
-		(property "Reference" "R11"
-			(at 142.24 130.81 90)
+		(property "Reference" "R19"
+			(at 92.71 148.59 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "100"
-			(at 142.24 133.35 90)
+		(property "Value" "33"
+			(at 92.71 151.13 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 142.24 135.382 90)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 92.71 153.162 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3706,8 +4429,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 142.24 137.16 0)
+		(property "Datasheet" ""
+			(at 92.71 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3716,7 +4439,70 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 142.24 137.16 0)
+			(at 92.71 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey Part Number" "13-RC0603FR-0733RLCT-ND"
+			(at 92.71 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 92.71 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 92.71 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 92.71 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "710-560112116009 "
+			(at 92.71 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 92.71 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Number" ""
+			(at 92.71 154.94 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3733,7 +4519,213 @@
 		(instances
 			(project ""
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "R11")
+					(reference "R19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_01x02_Pin")
+		(at 137.16 125.73 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a509772c-10c9-49d7-8a84-6987e938a274")
+		(property "Reference" "J2"
+			(at 143.383 124.714 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1x2_header"
+			(at 144.018 126.746 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2_1x02_P5.00mm_Horizontal"
+			(at 137.16 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "ARM_SWITCH"
+			(at 143.764 129.032 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated"
+			(at 137.16 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey Part Number" ""
+			(at 137.16 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 137.16 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 137.16 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 137.16 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "651-1711026"
+			(at 137.16 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 137.16 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Number" ""
+			(at 137.16 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "959fc072-dd93-4590-ac37-c4b5a479fa8c")
+		)
+		(pin "1"
+			(uuid "c182326e-1eb9-4145-873a-1eca6654cf74")
+		)
+		(instances
+			(project "avionics"
+				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Polarized")
+		(at 185.42 44.45 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a64a532f-97ac-4eb4-8b37-1a758a278128")
+		(property "Reference" "C19"
+			(at 196.088 41.91 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1000u"
+			(at 196.088 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm"
+			(at 189.23 43.4848 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 185.42 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polarized capacitor"
+			(at 185.42 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey Part Number" "1189-1545-1-ND"
+			(at 185.42 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "9be2eef3-9515-4461-bbeb-e59985a042b3")
+		)
+		(pin "1"
+			(uuid "be4fe465-23b7-4541-9899-6038628b6280")
+		)
+		(instances
+			(project ""
+				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
+					(reference "C19")
 					(unit 1)
 				)
 			)
@@ -3783,6 +4775,69 @@
 			)
 		)
 		(property "Description" "Quadruple Bus Buffer Gates With 3-State Outputs"
+			(at 146.05 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey Part Number" "296-4652-1-ND"
+			(at 146.05 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 146.05 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 146.05 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 146.05 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" ""
+			(at 146.05 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 146.05 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Number" "C155176"
 			(at 146.05 80.01 0)
 			(effects
 				(font
@@ -3843,73 +4898,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 91.44 69.85 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c36ccdda-a7f4-42f7-9f8f-96ac740a594d")
-		(property "Reference" "TP18"
-			(at 93.98 71.8819 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "TP_SERVO_2"
-			(at 93.98 74.4219 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 86.36 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 86.36 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 91.44 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "14e7721a-46b3-429e-8470-06b18e886629")
-		)
-		(instances
-			(project ""
-				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "TP18")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "74xx:74AHCT125")
 		(at 110.49 49.53 0)
 		(unit 1)
@@ -3954,6 +4942,69 @@
 			)
 		)
 		(property "Description" "Quadruple Bus Buffer Gates With 3-State Outputs"
+			(at 110.49 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey Part Number" "296-4652-1-ND"
+			(at 110.49 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 110.49 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 110.49 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 110.49 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" ""
+			(at 110.49 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 110.49 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Number" "C155176"
 			(at 110.49 49.53 0)
 			(effects
 				(font
@@ -4014,75 +5065,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 91.44 80.01 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d381b4de-f62b-4ea1-9cc6-4150fbf90f86")
-		(property "Reference" "TP19"
-			(at 93.98 82.0419 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "TP_SERVO_3"
-			(at 93.98 84.5819 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 86.36 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 86.36 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 91.44 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e6646deb-82b7-4402-8cf5-b3b68cd8c8da")
-		)
-		(instances
-			(project ""
-				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "TP19")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector:Conn_01x02_Pin")
-		(at 166.37 119.38 0)
+		(at 137.16 134.62 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4091,15 +5075,15 @@
 		(dnp no)
 		(uuid "d7bffaff-3ff1-4b7a-99f8-4f677480ebbd")
 		(property "Reference" "J3"
-			(at 165.735 114.3 0)
+			(at 143.637 133.858 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "PYRO_0"
-			(at 166.37 116.332 0)
+		(property "Value" "1x2_header"
+			(at 144.272 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4107,7 +5091,7 @@
 			)
 		)
 		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2_1x02_P5.00mm_Horizontal"
-			(at 166.37 119.38 0)
+			(at 137.16 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4115,8 +5099,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 166.37 119.38 0)
+		(property "Datasheet" ""
+			(at 137.16 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4124,8 +5108,70 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x02, script generated"
-			(at 166.37 119.38 0)
+		(property "Description" "PYRO_0"
+			(at 143.764 138.176 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DigiKey Part Number" ""
+			(at 137.16 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 137.16 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 137.16 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 137.16 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "651-1711026"
+			(at 137.16 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 137.16 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Number" ""
+			(at 137.16 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4149,142 +5195,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 91.44 49.53 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e4800173-acf2-4852-90ea-685f2cafd44b")
-		(property "Reference" "TP16"
-			(at 93.98 51.5619 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "TP_SERVO_0"
-			(at 93.98 54.1019 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 86.36 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 86.36 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 91.44 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e334beb3-4be2-4175-b6c8-122c8b8166e3")
-		)
-		(instances
-			(project ""
-				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "TP16")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 123.19 137.16 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ed65ae8b-08cd-4fcd-a7a9-bccc724adae0")
-		(property "Reference" "TP20"
-			(at 125.73 132.5879 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TP_PYRO_0"
-			(at 125.73 135.1279 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 128.27 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 128.27 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 123.19 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a5e7b2f8-c016-49c1-aec7-6afa60b13501")
-		)
-		(instances
-			(project ""
-				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "TP20")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
-		(at 177.8 143.51 0)
+		(at 138.43 161.29 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4292,8 +5204,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f09b42db-5b58-4544-b79b-5a45d03550d7")
-		(property "Reference" "R13"
-			(at 180.34 142.2399 0)
+		(property "Reference" "R21"
+			(at 140.97 160.0199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4302,7 +5214,7 @@
 			)
 		)
 		(property "Value" "33k"
-			(at 180.34 144.7799 0)
+			(at 140.97 162.5599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4310,8 +5222,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 176.022 143.51 90)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 136.652 161.29 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4319,8 +5231,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 177.8 143.51 0)
+		(property "Datasheet" ""
+			(at 138.43 161.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4329,7 +5241,70 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 177.8 143.51 0)
+			(at 138.43 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey Part Number" "311-33.0KHRCT-ND"
+			(at 138.43 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 138.43 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 138.43 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 138.43 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "71-TNPW060333K0BEEA "
+			(at 138.43 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 138.43 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Number" ""
+			(at 138.43 161.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4346,7 +5321,7 @@
 		(instances
 			(project ""
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "R13")
+					(reference "R21")
 					(unit 1)
 				)
 			)
@@ -4360,7 +5335,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "f2915eb4-7583-49ee-aadc-73e78059d03d")
 		(property "Reference" "J5"
 			(at 199.39 60.9599 0)
@@ -4371,7 +5345,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "Servo_1"
+		(property "Value" "1x3_header"
 			(at 199.39 63.4999 0)
 			(effects
 				(font
@@ -4380,7 +5354,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3-5.08_1x03_P5.08mm_Horizontal"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 			(at 198.12 62.23 0)
 			(effects
 				(font
@@ -4389,7 +5363,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 198.12 62.23 0)
 			(effects
 				(font
@@ -4398,7 +5372,69 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x03, script generated"
+		(property "Description" "Servo_1"
+			(at 203.2 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DigiKey Part Number" ""
+			(at 198.12 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 198.12 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 198.12 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 198.12 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "538-22-23-6032"
+			(at 198.12 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 198.12 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Number" ""
 			(at 198.12 62.23 0)
 			(effects
 				(font
@@ -4427,7 +5463,7 @@
 	)
 	(symbol
 		(lib_id "Transistor_FET:AO3400A")
-		(at 154.94 137.16 0)
+		(at 115.57 154.94 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4435,8 +5471,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fb2ce020-128c-45e1-b398-963d12110dc6")
-		(property "Reference" "Q1"
-			(at 161.29 135.8899 0)
+		(property "Reference" "Q2"
+			(at 121.92 153.6699 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4445,7 +5481,7 @@
 			)
 		)
 		(property "Value" "AO3400A"
-			(at 161.29 138.4299 0)
+			(at 121.92 156.2099 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4454,7 +5490,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 160.02 139.065 0)
+			(at 120.65 156.845 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4465,7 +5501,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.aosmd.com/pdfs/datasheet/AO3400A.pdf"
-			(at 160.02 140.97 0)
+			(at 120.65 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4475,7 +5511,70 @@
 			)
 		)
 		(property "Description" "30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23"
-			(at 154.94 137.16 0)
+			(at 115.57 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey Part Number" "785-1000-1-ND"
+			(at 115.57 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 115.57 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 115.57 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 115.57 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" ""
+			(at 115.57 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 115.57 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Number" "C20917"
+			(at 115.57 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4495,7 +5594,7 @@
 		(instances
 			(project ""
 				(path "/5552e11b-fce5-44fd-aeb8-61bf7d07571f/9e1a8ef6-58a8-42c3-a8df-b8575642bd98"
-					(reference "Q1")
+					(reference "Q2")
 					(unit 1)
 				)
 			)
@@ -4509,7 +5608,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "fd1fd2ea-eaf5-4dd6-ac4e-9cd5f88cd419")
 		(property "Reference" "J4"
 			(at 199.39 50.7999 0)
@@ -4520,7 +5618,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "Servo_0"
+		(property "Value" "1x3_header"
 			(at 199.39 53.3399 0)
 			(effects
 				(font
@@ -4529,7 +5627,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3-5.08_1x03_P5.08mm_Horizontal"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 			(at 198.12 52.07 0)
 			(effects
 				(font
@@ -4538,7 +5636,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 198.12 52.07 0)
 			(effects
 				(font
@@ -4547,7 +5645,69 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x03, script generated"
+		(property "Description" "Servo_0"
+			(at 203.2 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DigiKey Part Number" ""
+			(at 198.12 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 198.12 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 198.12 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 198.12 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "538-22-23-6032"
+			(at 198.12 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 198.12 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Number" ""
 			(at 198.12 52.07 0)
 			(effects
 				(font
