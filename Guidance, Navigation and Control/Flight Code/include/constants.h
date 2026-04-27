@@ -26,6 +26,10 @@ static constexpr int kMISOPin = 12;
 static constexpr int kMOSIPin = 11;
 static constexpr int kSCKPin = 13;
 
+static constexpr int kIMUAccIntPin = 28;
+static constexpr int kIMUGyroIntPin = 29;
+static constexpr int kMagIntPin = 17;
+
 // PID parameters
 static float kProportional = 0.1f;
 static float kIntegrator = 0.0f;

@@ -17,6 +17,8 @@
 #define RAD_TO_DEG 57.2957795131 // Conversion factor from radians to degrees
 #define MG_TO_MPS2 0.00981f // Conversion factor from milli-g to m/s^2
 
+#define IMU_ODR 1000.0 // Output Data Rate for IMU in Hz
+
 ISM330DHCXSensor imu(&SPI, constants::kCsPin, 1000000);
 BME280I2C bme;
 BME280::TempUnit tempUnit = BME280::TempUnit_Celsius;
@@ -28,6 +30,17 @@ KalmanFilter GyroKalman;
 bool imu_initialized = false;
 bool mag_initialized = false;
 bool bme_initialized = false;
+
+volatile bool imu_int_flag = false;
+volatile bool mag_int_flag = false;
+
+void magISR() {
+  mag_int_flag = true;
+}
+
+void imuISR() {
+  imu_int_flag = true;
+}
 
 float verticalVelocity_ = 0.0f;
 unsigned long lastTimeMs_ = 0;
@@ -45,6 +58,10 @@ double heading = 0;
 double dt = 1.0 /1000.0; // Time step between samples
 
 bool use_filtered_data = true; //whether to log and display filtered data
+unsigned long lastBaroTime = 0;
+unsigned long now = 0;
+unsigned long baroIntervalMs = 20; // 50Hz
+double correctedAX, correctedAY, correctedAZ, correctedGX, correctedGY, correctedGZ;
 
 /**
  * @brief Constructs a Sensors object.
@@ -78,71 +95,87 @@ FlightData Sensors::ReadFlightData() {
   uint16_t samples;
 
   IMU_Data_ imu_data;
+  
+  now = flight_data.timeMs;
+  if (now - lastBaroTime >= baroIntervalMs) {
+    lastBaroTime = now;
 
-  double correctedAX, correctedAY, correctedAZ, correctedGX, correctedGY, correctedGZ;
+    float newAltitude = readAltitude();
+
+    // Only update if valid (important!)
+    if (!isnan(newAltitude)) {
+      flight_data.altitude = newAltitude;
+    }
+  }
 
   // Read each sensor ONCE
-  imu.FIFO_Get_Num_Samples(&samples);
-  if (samples > SAMPLE_THRESHOLD) {
-    imu_data = readIMU(samples);
-    flight_data.altitude         = readAltitude(); // from barometer
+  if (imu_int_flag) {
+    imu_int_flag = false;
+    imu.FIFO_Get_Num_Samples(&samples);
+    if (samples > SAMPLE_THRESHOLD) {
+      imu_data = readIMU(samples);
 
-    if (use_filtered_data == false) { //if we choose not to use filtered data
-      flight_data.accX = imu_data.ax; // Convert from milli-g to m/s^2
-      flight_data.accY = imu_data.ay;
-      flight_data.accZ = imu_data.az;
+      if (use_filtered_data == false) { //if we choose not to use filtered data
+        flight_data.accX = imu_data.ax; // Convert from milli-g to m/s^2
+        flight_data.accY = imu_data.ay;
+        flight_data.accZ = imu_data.az;
 
-      flight_data.rotX = imu_data.gx;
-      flight_data.rotY = imu_data.gy;
-      flight_data.rotZ = imu_data.gz;
+        flight_data.rotX = imu_data.gx;
+        flight_data.rotY = imu_data.gy;
+        flight_data.rotZ = imu_data.gz;
 
-      flight_data.accelMagnitude = sqrt(
-      pow(imu_data.ax, 2) +
-      pow(imu_data.ay, 2) +
-      pow(imu_data.az, 2)
-      );
-    } else { //if filtered data is to be used
+        flight_data.accelMagnitude = sqrt(
+        pow(imu_data.ax, 2) +
+        pow(imu_data.ay, 2) +
+        pow(imu_data.az, 2)
+        );
+      } else { //if filtered data is to be used
 
-      correctedAX = (imu_data.ax) + initial_state_.linear_offsets[0];
-      correctedAY = (imu_data.ay) + initial_state_.linear_offsets[1];
-      correctedAZ = (imu_data.az) + initial_state_.linear_offsets[2];
-      correctedGX = imu_data.gx + initial_state_.angular_rate_offsets[0];
-      correctedGY = imu_data.gy + initial_state_.angular_rate_offsets[1];
-      correctedGZ = imu_data.gz + initial_state_.angular_rate_offsets[2];
+        correctedAX = (imu_data.ax) + initial_state_.linear_offsets[0];
+        correctedAY = (imu_data.ay) + initial_state_.linear_offsets[1];
+        correctedAZ = (imu_data.az) + initial_state_.linear_offsets[2];
+        correctedGX = imu_data.gx + initial_state_.angular_rate_offsets[0];
+        correctedGY = imu_data.gy + initial_state_.angular_rate_offsets[1];
+        correctedGZ = imu_data.gz + initial_state_.angular_rate_offsets[2];
 
-      //get z axis pos/vel/acc estimate from kalman filter
-      Eigen::VectorXd acc_estimate = AccKalmanUpdate(correctedAX, correctedAY, correctedAZ);
+        //get z axis pos/vel/acc estimate from kalman filter
+        Eigen::VectorXd acc_estimate = AccKalmanUpdate(correctedAX, correctedAY, correctedAZ);
 
-      //update accX, accY, accZ, altitude and velocity based on acc_estimates
-      flight_data.accX = acc_estimate(2); 
-      flight_data.accY = acc_estimate(5);
-      flight_data.accZ = acc_estimate(8);
-      flight_data.altitude         = acc_estimate(6);
-      flight_data.verticalVelocity = acc_estimate(7);
+        //update accX, accY, accZ, altitude and velocity based on acc_estimates
+        flight_data.accX = acc_estimate(2); 
+        flight_data.accY = acc_estimate(5);
+        flight_data.accZ = acc_estimate(8);
+        // flight_data.altitude         = acc_estimate(6);
+        flight_data.verticalVelocity = acc_estimate(7);
 
-      Eigen::VectorXd gyr_estimate = GyroKalmanUpdate(correctedGX, correctedGY, correctedGZ);
+        Eigen::VectorXd gyr_estimate = GyroKalmanUpdate(correctedGX, correctedGY, correctedGZ);
 
-      flight_data.oriX = gyr_estimate(0) * RAD_TO_DEG;
-      flight_data.oriY = gyr_estimate(2) * RAD_TO_DEG;
-      flight_data.oriZ = gyr_estimate(4) * RAD_TO_DEG;
+        flight_data.oriX = gyr_estimate(0) * RAD_TO_DEG;
+        flight_data.oriY = gyr_estimate(2) * RAD_TO_DEG;
+        flight_data.oriZ = gyr_estimate(4) * RAD_TO_DEG;
 
-      flight_data.rotX = gyr_estimate(1);
-      flight_data.rotY = gyr_estimate(3);
-      flight_data.rotZ = gyr_estimate(5);
+        flight_data.rotX = gyr_estimate(1);
+        flight_data.rotY = gyr_estimate(3);
+        flight_data.rotZ = gyr_estimate(5);
 
-      flight_data.accelMagnitude = sqrt(
-      pow(acc_estimate(2), 2) +
-      pow(acc_estimate(5), 2) +
-      pow(acc_estimate(8), 2)
-      );      
-    };
+        flight_data.accelMagnitude = sqrt(
+        pow(acc_estimate(2), 2) +
+        pow(acc_estimate(5), 2) +
+        pow(acc_estimate(8), 2)
+        );      
+      };
+    }
   }
-  Mag_Data_ mag_data = readMagnetometer();
 
-  flight_data.magX    = mag_data.mx;
-  flight_data.magY    = mag_data.my;
-  flight_data.magZ    = mag_data.mz;
-  flight_data.heading = mag_data.heading;
+  if (mag_int_flag) {
+    Mag_Data_ mag_data = readMagnetometer();
+
+    flight_data.magX    = mag_data.mx;
+    flight_data.magY    = mag_data.my;
+    flight_data.magZ    = mag_data.mz;
+    flight_data.heading = mag_data.heading;
+
+  }
 
   flight_data.rbfRemoved = digitalRead(constants::kRbfPin);
 
@@ -195,12 +228,15 @@ void Sensors::initialize_IMU() {
         imu.ACC_SetFullScale(16);
         imu.GYRO_SetFullScale(2000);
         imu.FIFO_Set_Mode(ISM330DHCX_STREAM_MODE);   // continuous overwrite
-        imu.FIFO_ACC_Set_BDR(104);
-        imu.FIFO_GYRO_Set_BDR(104);
-        imu.ACC_SetOutputDataRate(104);
-        imu.GYRO_SetOutputDataRate(104);
+        imu.FIFO_ACC_Set_BDR(IMU_ODR);
+        imu.FIFO_GYRO_Set_BDR(IMU_ODR);
+        imu.ACC_SetOutputDataRate(IMU_ODR);
+        imu.GYRO_SetOutputDataRate(IMU_ODR);
         imu.ACC_Enable();
         imu.GYRO_Enable();
+
+        pinMode(constants::kIMUGyroIntPin, INPUT);
+        attachInterrupt(digitalPinToInterrupt(constants::kIMUGyroIntPin), imuISR, RISING);
 
         Serial.println("Computing initial state from IMU readings...");
 
@@ -327,7 +363,7 @@ void Sensors::initialiseFilters() {
   // sigma in degrees/s,  var in (degrees/s)²
   const double gyr_noise_density_mdps = 8.0;
   const double gyr_noise_density_dps  = gyr_noise_density_mdps * 1e-3; 
-  const double gyr_sigma_dps          = gyr_noise_density_dps * sqrt(104.0);
+  const double gyr_sigma_dps          = gyr_noise_density_dps * sqrt(IMU_ODR);
   const double gyr_var_dps2           = gyr_sigma_dps * gyr_sigma_dps;  
 
   gyr_A.setZero();
@@ -457,10 +493,13 @@ void Sensors::initializeMagnetometer() {
           Serial.println("MMC5983MA magnetometer initialized successfully.");
         } 
         mag.softReset();
-        mag.setFilterBandwidth(100); //set filter bandwidth to 100Hz
+        mag.setFilterBandwidth(800); //set filter bandwidth
         mag.enableAutomaticSetReset(); //set automatic set/reset
         mag.enableContinuousMode(); //enable continuous mode
-        mag.setContinuousModeFrequency(100); //set reading frquency to 100Hz
+        mag.setContinuousModeFrequency(IMU_ODR); //set reading frquency 
+
+        pinMode(constants::kMagIntPin, INPUT);
+        attachInterrupt(digitalPinToInterrupt(constants::kMagIntPin), magISR, RISING);
 }
 
 void Sensors::initaliseBarometer() {
@@ -473,6 +512,8 @@ void Sensors::initaliseBarometer() {
           bme_initialized = true;
           Serial.println("BME280 barometer initialized successfully.");
         }
+
+        flight_data.altitude = readBarometer();
         
 }
 /** @brief Reads the current altitude (stub implementation). */
