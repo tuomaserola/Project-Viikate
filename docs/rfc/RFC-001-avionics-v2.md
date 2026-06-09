@@ -157,12 +157,15 @@ expansion.
 
 | ID | Requirement | Priority | Rationale |
 |----|--------------|-----------|-----------|
-| M1 | The avionics assembly MUST fit within a 50×50 mm footprint and ≤30 mm stack height. | Critical | Ensures compatibility with 54–75 mm airframes with clearance. |
+| M1 | The avionics board stack MUST fit within a 50x50 mm footprint. | Critical | Ensures compatibility with 54–75 mm airframes with clearance. Allows for economic PCB assembly with JLC.  |
 | M2 | The avionics system SHOULD be modularly split into at least two boards: **Power/IO** and **Guidance/Telemetry**, connected via a stacking bus. | High | Separates sensitive sensors from power noise and simplifies maintenance. |
 | M3 | Boards MUST be physically and electrically keyed to prevent reverse installation. | Critical | Prevents catastrophic damage during integration. |
 | M4 | The assembled avionics SHOULD tolerate **> 8 g RMS vibration** up to **2 kHz** for **30 minutes** and survive **64 g peak shock loads** without functional failure. | Critical | Matches the rocket-level vibration and shock environments. |
 | M5 | The unit MUST be mechanically mountable to the airframe using at least **four M3 or equivalent fasteners** with isolation options. | High | Ensures robust mounting and isolation. |
 | M6 | All connectors MUST be **locking or positive retention** type, rated for **8 g vibration**. | Critical | Prevents disconnects in flight. |
+| M7 | All manually operated electrical connections apart from screw terminals MUST use dissimilar connectors | Medium | Reduces the chance of misconnections |
+| M8 | All electronics switches or connectors that need to be manually operated MUST be accessible from outside the vehicle via either access panels or direct mounting on the outer skin. | High | Ease of operation and operational safety |
+| M9 | All electronics switches or connectors that need to be manually operated MUST be mounted on the vehicle side opposite to the launch rail. | High | Launch rail blocks access |
 
 ---
 
@@ -199,6 +202,7 @@ expansion.
 | S3 | A **high‑G accelerometer (> 100 g)** MAY be included for high‑dynamic recording (boost). | Optional | Provides redundancy for high‑G flight. |
 | S4 | A **GPS receiver with >= 10 Hz update rate** MUST be integrated. | Critical | Required for location tracking and velocity estimation. |
 | S5 | All sensor clocks MUST be synchronized via **hardware timestamping** relative to system time. | High | Enables data correlation during flight analysis. |
+| S6 | MUST include a pressure relief hole **3 mm in diameter or equivalent area**| High | Allows for accurate barometer readings |
 
 ---
 
@@ -208,7 +212,7 @@ expansion.
 |----|--------------|-----------|-----------|
 | T1 | All boards MUST communicate via **CAN-FD** bus standard up to 1 Mbps. | Critical | Deterministic, noise-resistant comms architecture. |
 | T2 | Telemetry radio MUST achieve **>= 1 km range (rural)** or **>= 5 km LOS** at 10 mW nominal power. | High | Ensures reliable tracking range. |
-| T3 | Radio subsystem SHOULD support **frequency diversity** or **configurable frequencies (915 MHz / 433 MHz)**. | Medium | Regulatory and performance flexibility. |
+| T3 | Radio subsystem SHOULD support **frequency diversity** or **configurable frequencies (868 MHz / 433 MHz / 2.4GHz / ...)**. | Medium | Regulatory and performance flexibility. |
 | T4 | System SHOULD support **wired debugging interface** via SWD and USB. | High | Essential for maintenance and HIL testing. |
 
 ---
@@ -219,7 +223,7 @@ expansion.
 |----|--------------|-----------|-----------|
 | ACT1 | System MUST provide **>= 2 pyro channels** with 2 A drive, 50 ms minimum hold, isolated from logic. | Critical | Main and backup deployment. |
 | ACT2 | System MUST provide **>= 4 PWM servo outputs (5 V)** with independent current monitoring. | Critical | Supports thrust vectoring or fin control. |
-| ACT3 | Activation of pyro channels MUST require a **mechanical arm/safe interlock** and software confirmation. | Critical | Prevents accidental ignition. |
+| ACT3 | Activation of pyro channels MUST require a **mechanical arm/safe interlock** in addition to software confirmation. | Critical | Prevents accidental ignition. |
 | ACT4 | System SHOULD include **ignition continuity sensing** and onboard status LEDs. | High | Supports preflight verification. |
 
 ---
@@ -233,6 +237,8 @@ expansion.
 | SAF3 | The system MUST support a **preflight checklist state machine**. | Medium | Enforces safe configuration process. |
 | SAF4 | The avionics SHOULD be capable of remaining in the **pad‑armed state for >=4 hours** using internal battery without recharging. | Medium | Allows for delays before launch. |
 | SAF5 | The board SHOULD log **pre‑launch checks and arm status events** for post‑flight review. | Medium | Accountability and troubleshooting. |
+| SAF6 | Budget SHOULD stay under 140 EUR | High | *"The current budget left for viikate is 138,09€, with 600€ reserved for 'fall rocket project'"* - Tuomas |
+
 
 #### 8. Environmental performance
 
@@ -240,7 +246,8 @@ expansion.
 |----|--------------|-----------|-----------|
 | ENV1 | MUST be able to survive **relative humidity between 0 and 95%** without issues. | High | Prevents strange errors during flight. |
 | ENV2 | SHOULD be at least **IP54 water-resistant.** | High | Prevents loss of avionics in case of landing in wet environments. |
-| ENV3 | MUST survive **temperatures between -40 and +90 celsius**. | High | Allows for winter and summer launches. |
+| ENV3 | MUST survive **internal temperatures between -20 and +90 celsius**. | High | Allows for winter and summer launches. |
+| ENV4 | SHOULD survive **external temperatures above -40 celsius**. | Low | Allows for high altitude launches. |
 
 
 ---
