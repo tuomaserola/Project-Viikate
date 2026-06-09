@@ -114,6 +114,13 @@ integration of future subsystems such as advanced telemetry links, additional
 sensors, or actuator controllers. This extends the platform’s lifespan and
 adaptability.
 
+### 10. Routing issues
+
+Version 1 has routing issues to the external expansion headers, such as the
+power pins not being connected. This was caused by insufficient peer-review
+before the ordering of the final design. The development process of V2 should
+address this.
+
 ---
 
 ## 3. Goals
@@ -144,7 +151,97 @@ expansion.
 
 ## 4. Detailed Design
 
-TBD at meeting
+### 4.1 Requirements
+
+#### 1. Mechanical & Structural
+
+| ID | Requirement | Priority | Rationale |
+|----|--------------|-----------|-----------|
+| M1 | The avionics assembly MUST fit within a 50×50 mm footprint and ≤30 mm stack height. | Critical | Ensures compatibility with 54–75 mm airframes with clearance. |
+| M2 | The avionics system SHOULD be modularly split into at least two boards: **Power/IO** and **Guidance/Telemetry**, connected via a stacking bus. | High | Separates sensitive sensors from power noise and simplifies maintenance. |
+| M3 | Boards MUST be physically and electrically keyed to prevent reverse installation. | Critical | Prevents catastrophic damage during integration. |
+| M4 | The assembled avionics SHOULD tolerate **> 8 g RMS vibration** up to **2 kHz** for **30 minutes** and survive **64 g peak shock loads** without functional failure. | Critical | Matches the rocket-level vibration and shock environments. |
+| M5 | The unit MUST be mechanically mountable to the airframe using at least **four M3 or equivalent fasteners** with isolation options. | High | Ensures robust mounting and isolation. |
+| M6 | All connectors MUST be **locking or positive retention** type, rated for **8 g vibration**. | Critical | Prevents disconnects in flight. |
+
+---
+
+#### 2. Electrical Power
+
+| ID | Requirement | Priority | Rationale |
+|----|--------------|-----------|-----------|
+| P1 | Nominal power input MUST be **12 V DC**, with allowable range **9–18 V**. | Critical | Matches common LiPo 3S or Li-ion systems. |
+| P2 | Power distribution SHOULD include **separate isolated rails** for logic, sensors, and actuators. | High | Prevents servo brownouts from corrupting sensor readings. |
+| P3 | Total avionics power draw MUST NOT exceed **5 W average**, **10 W peak** under normal operation. | Medium | Supports battery sizing and electrical budget. |
+| P4 | Board MUST incorporate a **reverse-polarity protection** and **over-current protection** feature. | Critical | Prevents damage due to wiring or battery errors. |
+| P5 | Current-sense circuitry SHOULD measure **individual servo rails** and **total system draw**. | High | Enables fault detection and ground diagnostics. |
+| P6 | System MUST maintain low EMI to not interfere with sensitive sensors and RF sections of the avionics unit | High | Enables fault detection and ground diagnostics. |
+
+---
+
+#### 3. Processing & Storage
+
+| ID | Requirement | Priority | Rationale |
+|----|--------------|-----------|-----------|
+| C1 | Main MCU MUST be an **STM32H7** series (Cortex-M7) running >= 400 MHz. | Critical | Matches computational and I/O needs for guidance. |
+| C2 | Board MUST include at least **16 MB external flash** for data logging, soldered and non-removable. | Critical | Prevents SD card ejection or data loss in high-vibe conditions. |
+| C3 | Unit MUST present internal flash storage as a **USB mass storage device** for easy log retrieval. | High | Simplifies field data extraction. |
+| C4 | Logging rate SHOULD allow ≥100 Hz of telemetry logging for all channels with timestamping. | High | Ensures sufficient temporal resolution for trajectory reconstruction. |
+
+---
+
+#### 4. Sensing & Guidance
+
+| ID | Requirement | Priority | Rationale |
+|----|--------------|-----------|-----------|
+| S1 | System MUST include a **low‑G IMU** (accelerometer <= 16 g and gyroscope) for attitude control. | Critical | Fundamental sensor suite. |
+| S2 | A **barometer** with 10 cm resolution up to 5 km altitude MUST be included. | High | Provides altitude reference for staging/apogee detection. |
+| S3 | A **high‑G accelerometer (> 100 g)** MAY be included for high‑dynamic recording (boost). | Optional | Provides redundancy for high‑G flight. |
+| S4 | A **GPS receiver with >= 10 Hz update rate** MUST be integrated. | Critical | Required for location tracking and velocity estimation. |
+| S5 | All sensor clocks MUST be synchronized via **hardware timestamping** relative to system time. | High | Enables data correlation during flight analysis. |
+
+---
+
+#### **5. Telemetry & Communication**
+
+| ID | Requirement | Priority | Rationale |
+|----|--------------|-----------|-----------|
+| T1 | All boards MUST communicate via **CAN-FD** bus standard up to 1 Mbps. | Critical | Deterministic, noise-resistant comms architecture. |
+| T2 | Telemetry radio MUST achieve **>= 1 km range (rural)** or **>= 5 km LOS** at 10 mW nominal power. | High | Ensures reliable tracking range. |
+| T3 | Radio subsystem SHOULD support **frequency diversity** or **configurable frequencies (915 MHz / 433 MHz)**. | Medium | Regulatory and performance flexibility. |
+| T4 | System SHOULD support **wired debugging interface** via SWD and USB. | High | Essential for maintenance and HIL testing. |
+
+---
+
+#### **6. Pyrotechnic & Servo Control**
+
+| ID | Requirement | Priority | Rationale |
+|----|--------------|-----------|-----------|
+| ACT1 | System MUST provide **>= 2 pyro channels** with 2 A drive, 50 ms minimum hold, isolated from logic. | Critical | Main and backup deployment. |
+| ACT2 | System MUST provide **>= 4 PWM servo outputs (5 V)** with independent current monitoring. | Critical | Supports thrust vectoring or fin control. |
+| ACT3 | Activation of pyro channels MUST require a **mechanical arm/safe interlock** and software confirmation. | Critical | Prevents accidental ignition. |
+| ACT4 | System SHOULD include **ignition continuity sensing** and onboard status LEDs. | High | Supports preflight verification. |
+
+---
+
+#### 7. Safety & Operational
+
+| ID | Requirement | Priority | Rationale |
+|----|--------------|-----------|-----------|
+| SAF1 | The system MUST include **dual-layer arming (hardware + software)**. | Critical | Prevents unintended actuation. |
+| SAF2 | The system MUST provide **visual indicators (LED or OLED)** for power, armed state, and telemetry link. | High | Ground crew feedback. |
+| SAF3 | The system MUST support a **preflight checklist state machine**. | Medium | Enforces safe configuration process. |
+| SAF4 | The avionics SHOULD be capable of remaining in the **pad‑armed state for >=4 hours** using internal battery without recharging. | Medium | Allows for delays before launch. |
+| SAF5 | The board SHOULD log **pre‑launch checks and arm status events** for post‑flight review. | Medium | Accountability and troubleshooting. |
+
+#### 8. Environmental performance
+
+| ID | Requirement | Priority | Rationale |
+|----|--------------|-----------|-----------|
+| ENV1 | MUST be able to survive **relative humidity between 0 and 95%** without issues. | High | Prevents strange errors during flight. |
+| ENV2 | SHOULD be at least **IP54 water-resistant.** | High | Prevents loss of avionics in case of landing in wet environments. |
+| ENV3 | MUST survive **temperatures between -40 and +90 celsius**. | High | Allows for winter and summer launches. |
+
 
 ---
 
