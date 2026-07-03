@@ -6,4 +6,5 @@ hal_backend = get_option('hal_backend')
 
 subdir('shared')
 subdir('hal')
+subdir('control')
 subdir('firmware')
